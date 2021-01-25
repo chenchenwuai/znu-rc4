@@ -1,0 +1,65 @@
+{
+  "name": "znu-rc4",
+  "version": "0.0.1",
+  "description": "A simple rc4 class",
+  "keywords": [
+    "simple",
+    "rc4",
+    "typescript"
+  ],
+  "main": "lib/znu-rc4.cjs.js",
+  "module": "lib/znu-rc4.esm.js",
+  "browser": "lib/znu-rc4.umd.js",
+  "types": "types/main.d.ts",
+  "files": [
+    "lib/**/*",
+    "types/*",
+    "src/**/*"
+  ],
+  "scripts": {
+    "build:type": "rimraf types && tsc -p ./tsconfig.type.json",
+    "build": "rimraf lib && rollup -c && npm run build:type",
+    "test": "jest --no-cache",
+    "eslint": "eslint --ext .js,.vue,.tsx,.ts --fix ./src",
+    "release": "npm run test && standard-version && npm run build && npm pub && git push && rimraf lib"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue,ts,tsx}": [
+      "npm run eslint",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenchenwuai/znu-rc4.git"
+  },
+  "author": "chenwuai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chenchenwuai/znu-rc4/issues"
+  },
+  "homepage": "https://github.com/chenchenwuai/znu-rc4#readme",
+  "devDependencies": {
+    "@types/jest": "^23.3.5",
+    "@typescript-eslint/eslint-plugin": "^3.6.0",
+    "@typescript-eslint/parser": "^3.6.0",
+    "eslint": "^7.4.0",
+    "husky": "^4.2.5",
+    "jest": "^26.1.0",
+    "lint-staged": "^10.2.11",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.67.1",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-typescript": "^1.0.1",
+    "standard-version": "^8.0.2",
+    "ts-jest": "^26.1.2",
+    "tslib": "^1.10.0",
+    "typescript": "^3.0.1"
+  }
+}
